@@ -11,4 +11,14 @@ export class InformationServiceService {
     return this.httpClient.get(`${ENDPONINT_FIREBASE}/people.json`);
   }
 
+  setInformationPeople(people){
+    return this.httpClient.post(`${ENDPONINT_FIREBASE}/people.json`, people);
+  }
+
+}
+
+export interface Person {
+  nombre:string;
+  apellido:string;
+  edad:number;
 }

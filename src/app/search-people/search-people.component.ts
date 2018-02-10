@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { InformationServiceService } from '../services/information-service.service';
+import { Component, OnInit, HostListener } from '@angular/core';
+import { InformationServiceService, Person } from '../services/information-service.service';
 
 @Component({
   selector: 'app-search-people',
@@ -8,17 +8,18 @@ import { InformationServiceService } from '../services/information-service.servi
 })
 export class SearchPeopleComponent implements OnInit {
 
-  peopleList: any=[];
-  people: any ={};
+  peopleList: Person[]=[];
+  people: Person;
+  peopleListObject: Object={};
 
-  nombre='';
-  apellido='';
-  edad='';
+  nombre:string ='';
+  apellido: string ='';
+  edad:number =0;
 
   constructor(private infoService:InformationServiceService) {
     this.infoService.getInformationPeople().subscribe((peopleResp)=>{
-      this.peopleList=peopleResp;
-      this.peopleList = Object.keys(this.peopleList).map(key=> this.peopleList[key]);      
+      this.peopleListObject = peopleResp;
+      this.peopleList = Object.keys(this.peopleListObject).map(key=> this.peopleListObject[key]);      
       console.log(this.peopleList);
     },
     (peopleErr)=>{
@@ -30,10 +31,18 @@ export class SearchPeopleComponent implements OnInit {
   }
 
   setPeople(){
-    let numero= Math.round(Math.random() * (4 - 1) + 1);
+    let numero= Math.round(Math.random() * (this.peopleList.length - 1) + 1);
 
     this.nombre = this.peopleList[numero].nombre;
     this.apellido = this.peopleList[numero].apellido;
     this.edad = this.peopleList[numero].edad;
+  }
+
+  @HostListener('document:keyup',['$event'])
+  generateEvent(event:KeyboardEvent){
+    if(event.code=='Space'){
+      this.setPeople();
+    }
+    console.log(event.code);
   }
 }

@@ -8,6 +8,7 @@ import { SearchPeopleComponent } from './search-people/search-people.component';
 import { HttpClientModule }  from '@angular/common/http';
 import { Routes, RouterModule }  from '@angular/router';
 import { InformationServiceService } from './services/information-service.service';
+import { FormsModule }  from '@angular/forms';
 
 const appRoutes: Routes=[
   {path: '', component: SearchPeopleComponent},
@@ -26,7 +27,8 @@ const appRoutes: Routes=[
     BrowserModule,
     AngularFireDatabaseModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    FormsModule
   ],
   providers: [InformationServiceService],
   bootstrap: [AppComponent]

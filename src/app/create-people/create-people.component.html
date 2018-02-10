@@ -1,13 +1,21 @@
-<!-- <h1>
-  Ingresar Personas
-</h1>
-<form></form>
-  <label>Nombre:</label>
-  <input type="text" placeholder="Nombre">
-  <br>
-  <label>Apellido:</label>
-  <input type="text" placeholder="Apellido">
-  <br>
-  <label>Edad:</label>
-  <input type="text" placeholder="Edad">
-</form> -->
+<div class="container">
+  <form>
+    <div class="alert alert-success" role="alert" *ngIf="isSave">
+        Se ha almacenado correctamente la información de {{nombre | uppercase}}
+    </div>
+    <div class="form-group">
+      <label for="nombreText">NOMBRE</label>
+      <input type="text" class="form-control" id="nombreText" placeholder="nombre" [(ngModel)]="nombre" name="nombre"/>
+    </div>
+    <div class="form-group">
+      <label for="apellidoText">APELLIDO</label>
+      <input type="text" class="form-control" id="apellidoText" placeholder="apellido" [(ngModel)]="apellido" name="apellido"/>
+    </div>
+    <div class="form-group">
+      <label for="edadText">EDAD</label>
+      <input type="number" class="form-control" id="edadText" placeholder="edad" [(ngModel)]="edad" name="edad"/>
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="saveData()">Guardar</button>
+    <button type="submit" class="btn btn-secundary" (click)="clean()">Limpiar</button>
+  </form>
+</div>

@@ -1,11 +1,16 @@
-<h1>Información</h1>
-<br>
-<input type="button" (click)="setPeople()" value="Generar">
-<br>
-<br>
-<label>Nombre: {{nombre}}</label>
-<br>
-<label>Apellido: {{apellido}}</label>
-<br>
-<label>Edad: {{edad}}</label>
-
+<div class="container" (keyup)="generateEvent($event)">
+  <form>
+    <div class="form-group">
+      <label for="nombreText">NOMBRE</label>
+      <input type="text" readonly class="form-control" id="nombreText" placeholder="nombre" [value]="nombre">
+    </div>
+    <div class="form-group">
+      <label for="apellidoText">APELLIDO</label>
+      <input type="text"  readonly class="form-control" id="apellidoText" placeholder="apellido" [value]="apellido">
+    </div>
+    <div class="form-group">
+      <label for="edadText">EDAD</label>
+      <input type="number" readonly class="form-control" id="edadText" placeholder="edad" [value]="edad">
+    </div>    
+  </form>
+</div>
