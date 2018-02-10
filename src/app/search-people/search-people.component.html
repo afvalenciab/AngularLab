@@ -1,5 +1,9 @@
 <div class="container" (keyup)="generateEvent($event)">
   <form>
+    <div class="alert alert-success" role="alert" >
+          Presione Espacio....
+    </div>
+    <hr>  
     <div class="form-group">
       <label for="nombreText">NOMBRE</label>
       <input type="text" readonly class="form-control" id="nombreText" placeholder="nombre" [value]="nombre">
@@ -11,6 +15,7 @@
     <div class="form-group">
       <label for="edadText">EDAD</label>
       <input type="number" readonly class="form-control" id="edadText" placeholder="edad" [value]="edad">
-    </div>    
+    </div>  
   </form>
+  <br>
 </div>
